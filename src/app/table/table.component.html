@@ -8,12 +8,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th><span>First Name</span><i class="material-icons" (click) = "paginationNext()">{{sortIcon}}</i></th>
-                        <th><span>Last Name</span><i class="material-icons" (click) = "paginationNext()">{{sortIcon}}</i></th>
-                        <th><span>Email Id</span><i class="material-icons" (click) = "sort('email')">keyboard_arrow_down</i></th>
-                        <th><span>Address</span><i class="material-icons" (click) = "paginationNext()">keyboard_arrow_down</i></th>
-                        <th><span>Created</span><i class="material-icons" (click) = "paginationNext()">keyboard_arrow_down</i></th>
-                        <th><span>Balance</span><i class="material-icons" (click) = "paginationNext()">keyboard_arrow_down</i></th>
+                        <th *ngFor="let headerItem of headerJson, let i = index" (click) = "sort(headerItem.name, headerItem.order)" (click)="updateOrderBy(i)"><span>{{headerItem.label}}</span>
+                            <i class="material-icons" >{{icon[headerItem.order]}}</i>
+                        </th>
                     </tr>
                 </thead>
                 <tbody >

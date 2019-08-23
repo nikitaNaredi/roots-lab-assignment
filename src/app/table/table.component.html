@@ -8,13 +8,13 @@
             <table>
                 <thead>
                     <tr>
-                        <th *ngFor="let headerItem of headerJson, let i = index" (click) = "sort(headerItem.name, headerItem.order)" (click)="updateOrderBy(i)"><span>{{headerItem.label}}</span>
+                        <th *ngFor="let headerItem of headerJson , let i = index" (click) = "sort(headerItem.name, headerItem.order)" (click)="updateOrderBy(i)"><span>{{headerItem.label}}</span>
                             <i class="material-icons" >{{icon[headerItem.order]}}</i>
                         </th>
                     </tr>
                 </thead>
                 <tbody >
-                    <tr *ngFor="let rowItem of tableFilter" > 
+                    <tr *ngFor="let rowItem of tableFilter | slice: (this.currentPage*10):(this.currentPage*10+10)" > 
                         <td>{{rowItem.first}}</td>
                         <td>{{rowItem.last}}</td>
                         <td>{{rowItem.email}}</td>
@@ -28,15 +28,13 @@
                 <div class="pagination-item-wrapper">
                     <div class="range-wrapper">1 - 10 of {{tableLength}}</div>
                     <div class="pagination-btn-wrapper">
-                        <i class="material-icons" (click) = "pagination(1)">first_page</i>
-                        <i class="material-icons" 
-                            [attr.disabled] = "(2 < 1) ? 'true' : 'disabled'"
-                            (click) = "paginationPrev()">chevron_left</i>
-                        <i class="material-icons" (click) = "paginationNext()">chevron_right</i>
-                        <i class="material-icons" (click) = "pagination(1)">last_page</i>
+                        <i class="material-icons" (click) = "paginationFirst()" [ngClass]="{'disabled': disablePrevious()}">first_page</i>
+                        <i class="material-icons" (click) = "paginationPrev()" [ngClass]="{'disabled': disablePrevious()}">chevron_left</i>
+                        <i class="material-icons" (click) = "paginationNext()" [ngClass]="{'disabled': disableNext()}">chevron_right</i>
+                        <i class="material-icons" (click) = "paginationLast()" [ngClass]="{'disabled': disableNext()}">last_page</i>
                     </div>
                 </div>
-            </div>
+            </div>  
         </div>
     </div>
 </div>

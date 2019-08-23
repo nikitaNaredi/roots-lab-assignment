@@ -55,15 +55,15 @@ export class TableComponent implements OnInit {
       this.tableLength = this.tableData.length;
       this.tableFilter = this.tableData ;
       this.tablePages = Math.ceil( this.tableLength/10 );
-      this.currentPage = 1;
+      this.currentPage = 0;
      });
   }
   paginationNext() {
-    this.currentPage++;
+    this.currentPage += 1;
     console.log(this.currentPage);
   }
   paginationPrev() {
-    this.currentPage--;
+    this.currentPage -= 1;
     console.log(this.currentPage);
   }
 
@@ -75,7 +75,7 @@ export class TableComponent implements OnInit {
   }
 
   sort(sortBy: string, orderBy: number) {
-    this.tableFilter = (this.tableData).sort( (a, b ) => {
+    this.tableFilter = (this.tableFilter).sort( (a, b ) => {
       var val;
       if (a[sortBy] > b[sortBy]) 
         val = (orderBy == 0) ? -1 : 1;
@@ -87,5 +87,35 @@ export class TableComponent implements OnInit {
     });
   }
 
-  
+  disablePrevious() {
+
+    if(this.currentPage <= 0){
+      return true;
+    }
+    console.log("before "+this.currentPage)
+    return false;
+  }
+
+  disableNext() {
+    console.log("tab leen "+this.tablePages);
+    if(this.currentPage >= this.tablePages -1 ){
+      return true;
+    }
+    console.log("before "+this.currentPage)
+    return false;
+  }
+
+  paginationFirst() {
+    this.currentPage = 0;
+  }
+
+  paginationLast() {
+    this.currentPage = this.tablePages-1;
+    console.log("pages "+this.currentPage)
+  }
+
+  sliceUpdate() {
+    return '0:5' ;
+  }
+
 }

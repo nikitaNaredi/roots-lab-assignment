@@ -82,3 +82,7 @@ table td {
 .pagination-btn-wrapper i:hover {
     cursor: pointer;
 }
+.disabled{
+    pointer-events: none;
+    color: #adadad;
+}

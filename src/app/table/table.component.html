@@ -26,7 +26,7 @@
             </table>
             <div class="pagination-wrapper">
                 <div class="pagination-item-wrapper">
-                    <div class="range-wrapper">{{this.currentPage*10+1}} - {{this.currentPage*10+10}} of {{tableLength}}</div>
+                    <div class="range-wrapper">{{math.min(this.currentPage*10+1, tableLength)}} - {{math.min(this.currentPage*10+10, tableLength)}} of {{tableLength}}</div>
                     <div class="pagination-btn-wrapper">
                         <i class="material-icons" (click) = "paginationFirst()" [ngClass]="{'disabled': disablePrevious()}">first_page</i>
                         <i class="material-icons" (click) = "paginationPrev()" [ngClass]="{'disabled': disablePrevious()}">chevron_left</i>

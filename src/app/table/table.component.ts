@@ -89,15 +89,14 @@ export class TableComponent implements OnInit {
   sort(sortBy: string, orderBy: number) {
     this.tableFilter = this.tableData.sort( (a, b ) => {
       let val;
-      let first;
-      let second;
+      let first: any;
+      let second: any;
       if (sortBy === 'created') {
         first = new Date(a[sortBy]);
         second = new Date(b[sortBy]);
-      }
-      if (sortBy === 'balance') {
-        first = parseFloat(a[sortBy].slice(1, a[sortBy].length).replace(/,/g,''));
-        second = parseFloat(b[sortBy].slice(1, b[sortBy].length).replace(/,/g,''));
+      } else if (sortBy === 'balance') {
+        first = parseFloat(a[sortBy].slice(1, a[sortBy].length).replace(/,/g, ''));
+        second = parseFloat(b[sortBy].slice(1, b[sortBy].length).replace(/,/g, ''));
       } else {
         first = a[sortBy];
         second = b[sortBy];

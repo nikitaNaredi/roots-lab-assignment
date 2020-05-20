@@ -4,6 +4,8 @@ This project fetch table details from [Random Public API](https://randomapi.com/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
 
+Link: https://web-api-1810.firebaseapp.com/
+
 ## Prerequisites
 User should already have installed Node.js, latest stable angular/cli.
 
